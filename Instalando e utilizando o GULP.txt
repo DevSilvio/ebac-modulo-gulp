@@ -1,0 +1,91 @@
+Instalando e utilizando o GULP
+
+1º npm install --global gulp-cli
+2º com power shell vai ate a pasta do arquivo que vamos utilizar e iniciar o git: git init
+3º npm init  -> para iniciar e aparte enter até ficar tudo ok
+4º npm install --save-dev gulp -> para instalar uma dependência apenas no ambiente de desenvolvimento
+5º Abrir projeto no Vs Code para começar
+6º Dentro do arquivo "PACKAGE.JSON" criar um novo "SCRIPT" dentro de "scripts"
+chamado de: "gulp":"gulp",
+7º Criar arquivo: gulpfile.js
+8º Abrir o terminal e executar o gulp
+9º npm run gulp
+10º Adicionar a past node modules dentro do arquivo ".gitignore"
+
+MODURALIZAR O JAVASCRIPT - Escrever vários arquivos e ir importando um arquivo no outro
+
+1º Criar arquivo chamado: sum.js
+
+function somar(a, b){
+    return a + b;
+}
+
+module.exports = nome-da-função;  -> para exportar a função
+
+2º Criar arquivo que vai receber a função criada no passo 1º
+
+	Arquivo: artimetica.js.
+
+3º Dentro do arquivo criado importamos a função:
+
+const somar = require('./sum');
+
+Utilizando a função: 
+
+console.log('somar: ', somar(10,20));
+
+4º O gulp funciona como nos exemplos acima através das exportações de funções.
+
+5º Criando função no arquivo gulpfile.js e exportando, (publica):
+
+	function funcaoPadrao(callback){
+    		console.log("Executando via gulp");
+   		 callback();
+	}
+
+	exports.default = funcaoPadrao;  -> default define um função como padrão
+
+	npm run gulp	-> para fazer a execução do gulp
+
+	EXEMPLO DE EXECUÇÃO DO GULP PARA FUNÇÃO ESPECIFICA (publica):
+
+	function dizOi(callback){
+    		console.log("Olá gulp");
+    		callback();
+	}
+
+	exports.dizOi = dizOi;
+
+	npm run gulp dizOi	-> para fazer a execução da função especifica
+
+6º Podemos criar tarefas publicas ou privadas
+	
+	PUBLICAS: são aquelas que exportamos
+
+	PRIVADAS: é uma função javascript que é chamada por outra função, e não utilizamos o "exports", e não é acessível por linha de comando. Elas nos não exportamos mais podemos utilizar dentro de outras tarefa.
+
+7º FUNÇÃO PRIVADA:
+	
+	function dizTchau (){
+    		console.log("Tachau gulp");
+	}
+
+8º COMO FUNCIONA A FUNÇÃO PRIVADA NO GULP:
+
+	FUNÇÃO PRIVADA:
+
+	function dizTchau (){
+    		console.log("Tachau gulp");
+	}
+
+	FUNCIONAMENTO:
+
+	function dizOi(callback){
+    		console.log("Olá gulp");
+   		dizTchau();
+    		callback();
+	}
+
+	exports.dizOi = dizOi;
+
+	NO TERMINAL: npm run gulp dizOi

@@ -1,0 +1,7 @@
+Ignorar arquivo que já foram para o repositório
+
+1º colocar o arquivo dentro da pasta .gitignore
+2º git rm -r --cached nome-do-arquivo	-> Colocar nome do arquivo que vou ignorar que esteja dentro do repositório
+3º git add .	-> Atualizar mudanças no código
+3º git commit -m "Atualizando .gitignore"
+4º git push origin main
