@@ -1,0 +1,22 @@
+PLUGINS GULP
+
+npm install --save-dev gulp-sourcemaps  --> Plugin para mapear o código e colocar cada linha de código em seus devidos lugares
+	
+	const sourcemaps = require('gulp-sourcemaps');  --> para fazer a importação do plugin
+
+
+npm install --save-dev gulp-uglify --> Plugin para minificação de javascript OU comprimir o código javascript
+
+	const uglify = require('gulp-uglify');  --> para fazer a importação do plugin
+
+npm install --save-dev gulp-obfuscate --> Plugin para deixar o código inelegível para não ter copias 
+
+	const obfuscate = require('gulp-obfuscate'); --> para fazer a importação do plugin
+
+	COMO USAR: Dentro da função que faz a importação de código e comprime colocar o comando:
+
+		.pipe(obfuscate())
+
+npm install --save-dev gulp-imagemin@7.1.0 --> Plugin utilizado para comprimir imagem
+
+	const imagemin = require('gulp-imagemin');
